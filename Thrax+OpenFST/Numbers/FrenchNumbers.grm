@@ -1,0 +1,63 @@
+# French Numbers from 0 to 100
+
+zero  = "0" : "zéro";
+
+units =   ("1" : "un")
+	| ("2" : "deux")
+	| ("3" : "trois")
+	| ("4" : "quatre")
+	| ("5" : "cinq")
+	| ("6" : "six")
+	| ("7" : "sept")
+	| ("8" : "huit")
+	| ("9" : "neuf")
+;
+
+teens =   ("10" : "dix")
+	| ("11" : "onze")
+	| ("12" : "douze")
+	| ("13" : "treize")
+	| ("14" : "quatorze")
+	| ("15" : "quinze")
+	| ("16" : "seize")
+;
+
+decades =  ("1" : "dix")
+	  |	("2" : "vingt")
+	  | ("3" : "trente")
+	  | ("4" : "quarante")
+	  | ("5" : "cinquante")
+	  | ("6" : "soixante")
+;
+
+sp_teens = ("0" : "dix")
+	  |	("1" : "onze")
+	  |	("2" : "douze")
+	  | ("3" : "treize")
+	  | ("4" : "quatorze")
+	  | ("5" : "quinze")
+	  | ("6" : "seize")
+	  | ("7" : "dix-sept")
+	  | ("8" : "dix-huit")
+	  | ("9" : "dix-neuf")
+;
+
+seventy = "7" : "soixante";
+eighty = "8" : "quatre-vingt";
+ninety = "9" : "quatre-vingt";
+
+ins_space = "" : " ";
+
+ins_hyphen = "" : "-";
+
+ins_et = "1" : " et un";
+
+del_zero = "0" : "";
+
+numbers_17_to_69 = decades del_zero | decades ins_hyphen units | decades ins_et;
+
+numbers_70_to_99 = seventy ("1":  " et onze") | seventy ins_hyphen sp_teens | eighty ("0" : "s") | eighty ins_hyphen units | ninety ins_hyphen sp_teens;
+
+hundred = "100" : "cent";
+
+export NUMBERS_FR = Optimize[zero| units | teens | numbers_17_to_69 | numbers_70_to_99 | hundred] ;
